@@ -1,0 +1,29 @@
+<div *ngIf="post" class="container my-4">
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h2 class="card-title mb-3">{{ post.title }}</h2>
+      <p class="card-text">{{ post.body }}</p>
+
+      <a class="btn btn-outline-primary mt-3" [routerLink]="['/users', post.userId]">
+        ← Retour à l'utilisateur
+      </a>
+    </div>
+  </div>
+
+  <h3 class="mb-3">Commentaires</h3>
+  <ul class="list-group">
+    <li class="list-group-item d-flex align-items-start mb-2" *ngFor="let comment of comments">
+      <img 
+        *ngIf="comment.user?.image" 
+        [src]="comment.user.image" 
+        class="rounded-circle me-3" 
+        style="width:50px; height:50px; object-fit:cover;" 
+        alt="Avatar">
+
+      <div>
+        <strong>{{ comment.user.firstName }} {{ comment.user.lastName }}</strong>
+        <p class="mb-0">{{ comment.body }}</p>
+      </div>
+    </li>
+  </ul>
+</div>

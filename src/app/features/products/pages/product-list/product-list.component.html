@@ -1,0 +1,13 @@
+<div class="container my-4">
+  <div class="mb-3">
+    <a [routerLink]="['/products', 'create']" class="btn btn-success">+ Créer un produit</a>
+  </div>
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let product of products$ | async">
+      <strong>{{ product.title }}</strong> - {{ product.price }}$
+      <button class="btn btn-sm btn-primary ms-2" (click)="editProduct(product.id)">Modifier</button>
+      <button class="btn btn-sm btn-danger ms-2" (click)="deleteProduct(product.id)">Supprimer</button>
+    </li>
+  </ul>
+</div>

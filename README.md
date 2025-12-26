@@ -1,27 +1,118 @@
-# ProjetAngular
+# 🟦 DummyJSON Angular App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+Une application Angular 17+ pour afficher des utilisateurs, posts et commentaires depuis l’API [DummyJSON](https://dummyjson.com/).  
+Le projet utilise **Bootstrap 5** pour un design moderne et responsive et suit une **architecture claire** avec models, services et features.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 📂 Structure du projet
 
-## Code scaffolding
+src/app/
+├── core/
+│ ├── models/ # Interfaces TypeScript (User, Post, Comment)
+│ └── services/ # Services Angular pour l'API
+├── features/
+│ ├── users/
+│ │ └── pages/ # Composants UserList, UserDetail
+│ └── posts/
+│ └── pages/ # Composants PostList, PostDetail
+├── app.component.ts
+└── app.routes.ts # Routing principal
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🧱 Fonctionnalités
 
-## Running unit tests
+### 1. Liste des utilisateurs
+- Affiche tous les utilisateurs avec image, nom et email
+- Cliquer sur un utilisateur ouvre la page de détails
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 2. Détail utilisateur
+- Affiche les informations complètes (nom, email, âge, image)
+- Liste des posts de cet utilisateur
+- Navigation vers chaque post
 
-## Running end-to-end tests
+### 3. Liste globale des posts
+- Affiche tous les posts
+- Affiche l’auteur du post
+- Navigation vers le post ou l’utilisateur
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 4. Détail d’un post
+- Affiche le contenu du post
+- Liste les commentaires avec le nom et avatar de l’auteur
+- Bouton retour vers l’utilisateur
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## ⚙️ Technologies
+
+- Angular 17+  
+- TypeScript  
+- Bootstrap 5 (responsive et moderne)  
+- RxJS pour les appels API  
+- Angular Router pour la navigation  
+- Standalone Components Angular
+
+---
+
+## 🚀 Installation et démarrage
+
+1. Cloner le projet :
+
+```bash
+git clone <repo-url>
+cd <project-folder>
+```
+
+2. Installer les dépendances
+
+```bash
+npm install
+```
+
+3. Lancer le serveur Angular
+
+```bash
+ng serve
+```
+
+4. Ouvrir dans le navigateur
+
+```bash
+http://localhost:4200
+```
+
+---
+
+## 📦 Services API
+
+- UserService : getUsers(), getUserById(id)
+
+- PostService : getPosts(), getPostsByUser(userId), getPostById(postId)
+
+- CommentService : getCommentsByPost(postId)
+
+Les services utilisent RxJS Observables et des modèles TypeScript pour typage strict. 
+
+---
+
+## 🎨 Design
+
+- Bootstrap 5 pour un rendu moderne et responsive
+- Cards pour utilisateurs et posts
+- List-group pour commentaires
+- Navbar pour navigation globale
+
+---
+
+## ✅ Avantages
+
+- Architecture claire et maintenable
+- Typage strict avec modèles TypeScript
+- Navigation propre avec Angular Router
+- Responsive et esthétique grâce à Bootstrap
+
+ 
+
+

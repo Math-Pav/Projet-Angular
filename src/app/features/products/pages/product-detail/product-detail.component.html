@@ -1,0 +1,77 @@
+<div class="container my-4" *ngIf="form">
+  <h2>Modifier le produit</h2>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label class="form-label">Titre</label>
+      <input class="form-control" formControlName="title">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea class="form-control" formControlName="description"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Prix</label>
+      <input type="number" class="form-control" formControlName="price">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Marque</label>
+      <input class="form-control" formControlName="brand">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Catégorie</label>
+      <input class="form-control" formControlName="category">
+    </div>
+
+    <button type="submit" class="btn btn-success me-2" [disabled]="!form.valid || isLoading">
+      <span *ngIf="!isLoading">Enregistrer</span>
+      <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+      <span *ngIf="isLoading">En cours...</span>
+    </button>
+    <button type="button" class="btn btn-danger" (click)="delete()" [disabled]="isLoading">Supprimer</button>
+  </form>
+</div>
+
+<!-- Modal de succès -->
+<div class="modal" [class.show]="showSuccessModal" [style.display]="showSuccessModal ? 'block' : 'none'" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">✓ Succès</h5>
+        <button type="button" class="btn-close btn-close-white" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p>Le produit a été modifié avec succès!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="closeModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal d'erreur -->
+<div class="modal" [class.show]="showErrorModal" [style.display]="showErrorModal ? 'block' : 'none'" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">✗ Erreur</h5>
+        <button type="button" class="btn-close btn-close-white" (click)="closeErrorModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ errorMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closeErrorModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Overlay de la modal -->
+<div class="modal-backdrop fade" [class.show]="showSuccessModal || showErrorModal"
+  *ngIf="showSuccessModal || showErrorModal"></div>
