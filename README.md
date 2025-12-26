@@ -13,9 +13,9 @@ src/app/
 │ └── services/ # Services Angular pour l'API
 ├── features/
 │ ├── users/
-│ │ └── pages/ # Composants UserList, UserDetail
-│ └── posts/
-│ └── pages/ # Composants PostList, PostDetail
+│ │ └── pages/ # Composants...
+│ └── products/
+│ └── pages/ # Composants...
 ├── app.component.ts
 └── app.routes.ts # Routing principal
 
@@ -43,6 +43,13 @@ src/app/
 - Liste les commentaires avec le nom et avatar de l’auteur
 - Bouton retour vers l’utilisateur
 
+### 5. Produits
+- **Afficher la liste de l'ensemble des produits** avec titre et prix
+- **Page de détail pour chaque produit** permettant :
+  - **Modification** du produit via un **Reactive Form**
+  - **Suppression** du produit avec confirmation
+- **Page dédiée à la création** d'un nouveau produit via un **Reactive Form**
+- Modal de succès après modification avec redirection automatique
 ---
 
 ## ⚙️ Technologies
@@ -92,6 +99,8 @@ http://localhost:4200
 - PostService : getPosts(), getPostsByUser(userId), getPostById(postId)
 
 - CommentService : getCommentsByPost(postId)
+
+- ProductService : loadProducts(), getProductById(id), addProduct(), updateProduct(), deleteProduct()
 
 Les services utilisent RxJS Observables et des modèles TypeScript pour typage strict. 
 
